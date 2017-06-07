@@ -1,0 +1,33 @@
+package:
+    name: openfoam
+    version: "3.0.1"
+source:
+    #fn: OpenFOAM-3.0.1.tgz
+    #url: https://sourceforge.net/projects/foam/files/foam/3.0.1/OpenFOAM-3.0.1.tgz
+    #md5: 304e6a14b9e69c20989527f5fb1ed724
+    #patches:
+    #    - ptscotchDecomp.patch
+    path:  /home/edu/miniconda2/conda-bld/openfoam_1494875081741/work/OpenFOAM-3.0.1
+       
+build:
+    number: 0
+requirements:
+    build:
+        - gcc
+        - toolchain
+        - mpich >=3.2
+        - boost
+    run:
+        - mpich >=3.2
+        - boost
+extra:
+    sources:
+        3rdparty:
+            #fn: ThirdParty-3.0.1.tgz
+            #url: https://sourceforge.net/projects/foam/files/foam/3.0.1/ThirdParty-3.0.1.tgz
+            #md5: 4665072d7d29ab9af5ced402f667185a
+            path:  /home/edu/miniconda2/conda-bld/openfoam_1494875081741/work/ThirdParty-3.0.1
+
+about:
+    home: https://openfoam.org
+license: GPL3

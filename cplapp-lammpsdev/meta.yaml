@@ -1,0 +1,39 @@
+{% set name = "cplapp-lammpsdev" %}
+{% set version = "1.0" %}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+source:
+    git_url: https://github.com/Crompulence/CPL_APP_LAMMPS-DEV.git
+       
+build:
+    number: 0
+
+requirements:
+    build:
+        - gcc
+        - toolchain
+        - mpich 3.2.*
+        - cpl
+    run:
+        - mpich 3.2.*
+        - cpl
+test:
+    requires:
+        - mpich 3.2.*
+        - cpl
+        - cplpy
+    source_files :
+        - test
+    commands:
+        - py.test -v ./test
+extra:
+    sources:
+        LAMMPS-DEV:
+            git_url: https://github.com/lammps/lammps.git
+    recipe-maintainers:
+        - edu159
+about:
+    home: http://cpl-library.org
+license: GPL3

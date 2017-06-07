@@ -1,0 +1,28 @@
+--- bashrc	2017-05-16 14:45:38.165049296 +0100
++++ ./etc/bashrc	2017-05-16 12:14:57.573068394 +0100
+@@ -37,15 +37,17 @@
+ ################################################################################
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ #
+-# either set $FOAM_INST_DIR before sourcing this file or set
+-# 'foamInstall' below to where OpenFOAM is installed
++# FOAM_INST_DIR is the location of the OpenFOAM installation which defaults to
++# the directory containing this file if sourced by a bash shell.
+ #
+-# Location of the OpenFOAM installation
+-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-foamInstall=$HOME/$WM_PROJECT
+-# foamInstall=~$WM_PROJECT
+-# foamInstall=/opt/$WM_PROJECT
+-# foamInstall=/usr/local/$WM_PROJECT
++# Please set to the appropriate path if the default is not correct.
++#
++[ $BASH_SOURCE ] && \
++	export FOAM_INST_DIR=${BASH_SOURCE%/*/*/*} || \
++	export FOAM_INST_DIR=$HOME/$WM_PROJECT
++# export FOAM_INST_DIR=~$WM_PROJECT
++# export FOAM_INST_DIR=/opt/$WM_PROJECT
++# export FOAM_INST_DIR=/usr/local/$WM_PROJECT
+ #
+ # END OF (NORMAL) USER EDITABLE PART
+ ################################################################################

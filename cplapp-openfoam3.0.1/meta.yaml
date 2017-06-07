@@ -1,0 +1,38 @@
+{% set name = "cplapp-openfoam" %}
+{% set version = "3.0.1" %}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+source:
+    git_url: https://github.com/Crompulence/CPL_APP_OPENFOAM-3.0.1.git
+       
+build:
+    number: 0
+
+requirements:
+    build:
+        - gcc
+        - toolchain
+        - mpich 3.2.*
+        - openfoam 3.0.1
+        - cpl
+    run:
+        - mpich 3.2.*
+        - openfoam 3.0.1
+        - cpl
+test:
+    requires:
+        - mpich 3.2.*
+        - openfoam 3.0.1
+        - cpl
+        - cplpy
+        - pyfoam 0.6.6
+    source_files :
+        - test
+extra:
+    recipe-maintainers:
+        - edu159
+about:
+    home: http://cpl-library.org
+license: GPL3

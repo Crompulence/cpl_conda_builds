@@ -1,0 +1,85 @@
+package:
+  name: pyfoam
+  version: "0.6.6"
+
+source:
+  fn: PyFoam-0.6.6.tar.gz
+  url: https://pypi.python.org/packages/54/bd/e77b8a46f650eee4f238ff5531ab3e616bde9293c84945eabb3dddcb278f/PyFoam-0.6.6.tar.gz
+  md5: 2cd469b1282f1f17349825fcd0899ef3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyfoam = pyfoam:main
+    #
+    # Would create an entry point called pyfoam that calls pyfoam.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+
+test:
+  # Python imports
+  requires:
+    - ipython 5.3.0
+
+  imports:
+    - PyFoam
+    - PyFoam.Applications
+    - PyFoam.Basics
+    - PyFoam.Execution
+    - PyFoam.IPythonHelpers
+    - PyFoam.Infrastructure
+    - PyFoam.Infrastructure.RunHooks
+    - PyFoam.LogAnalysis
+# Do not assume paraview is installed
+#   - PyFoam.Paraview
+    - PyFoam.RunDictionary
+    - PyFoam.Site
+    - PyFoam.ThirdParty
+    - PyFoam.ThirdParty.Gnuplot
+    - PyFoam.ThirdParty.ply
+    - PyFoam.ThirdParty.tqdm
+    - PyFoam.ThirdParty.tqdm.tqdm
+    - PyFoam.Wrappers
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://openfoamwiki.net/index.php/Contrib/PyFoam
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Python Utilities for OpenFOAM'
+  license_family: GPL2
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
