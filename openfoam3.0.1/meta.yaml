@@ -10,7 +10,7 @@ package:
 source:
     {% if build_mode == "download" %}
     fn: OpenFOAM-{{ version }}.tgz
-    url: https://sourceforge.net/projects/foam/files/foam/{{ version }}/OpenFOAM- {{ version }}.tgz
+    url: https://sourceforge.net/projects/foam/files/foam/{{ version }}/OpenFOAM-{{ version }}.tgz
     md5: {{ src_md5 }}
     patches:
         - ptscotchDecomp.patch
