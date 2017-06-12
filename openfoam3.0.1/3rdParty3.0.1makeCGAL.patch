@@ -1,5 +1,5 @@
---- makeCGAL	2017-06-12 12:25:28.959317675 +0100
-+++ makeCGAL2	2017-06-12 12:25:19.899317695 +0100
+--- makeCGAL	2017-06-12 12:27:13.247317455 +0100
++++ makeCGAL2	2017-06-12 12:45:50.727315095 +0100
 @@ -157,16 +157,9 @@
          exit 1
      }
@@ -15,8 +15,8 @@
 -        boostLib="/usr/lib"
 -    fi
 +	# For a conda environment build
-+    boostInc=$PREFIX/include
-+	boostLib=$PREFIX/lib
++    boostInc=$CONDA_PREFIX/include
++	boostLib=$CONDA_PREFIX/lib
  fi
  
  
