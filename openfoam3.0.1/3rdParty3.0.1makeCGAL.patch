@@ -1,0 +1,22 @@
+--- makeCGAL	2017-06-12 12:25:28.959317675 +0100
++++ makeCGAL2	2017-06-12 12:25:19.899317695 +0100
+@@ -157,16 +157,9 @@
+         exit 1
+     }
+ else
+-    boostInc="/usr/include"
+-
+-    # for completeness:
+-    # 64-bit needs lib64, but 32-bit needs lib (not lib32)
+-    if [ "$WM_ARCH_OPTION" = 64 ]
+-    then
+-        boostLib="/usr/lib$WM_ARCH_OPTION"
+-    else
+-        boostLib="/usr/lib"
+-    fi
++	# For a conda environment build
++    boostInc=$PREFIX/include
++	boostLib=$PREFIX/lib
+ fi
+ 
+ 

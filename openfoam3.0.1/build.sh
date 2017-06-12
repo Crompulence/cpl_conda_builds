@@ -25,6 +25,8 @@ fi
 # Only build if the sources are downloaded
 if [ $BUILD_MODE == "download" ]; then
 	cd $SRC_DIR/../ThirdParty-3.0.1
+	cp $RECIPE_DIR/3rdParty3.0.1makeCGAL.patch .
+	patch < 3rdParty3.0.1makeCGAL.patch
 	./Allwmake -j
 	cd $SRC_DIR
 	./Allwmake -j
