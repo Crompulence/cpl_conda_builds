@@ -26,9 +26,12 @@ build:
 
 requirements:
     build:
+        - python 2.7.*
         - mpich 3.2.*
+        - boost 1.60.0
     run:
         - mpich 3.2.*
+        - boost 1.60.*
 extra:
     {% if build_mode == "download" %}
     sources:
