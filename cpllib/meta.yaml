@@ -8,8 +8,6 @@ build:
     number: 0
 requirements:
     build:
-        - gcc
-        - toolchain
         - mpich 3.2.*
     run:
         - mpich 3.2.*
