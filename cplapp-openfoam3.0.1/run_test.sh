@@ -1,2 +1,5 @@
-source $PREFIX/opt/OpenFOAM-3.0.1/etc/bashrc
+FOAM_VERSION=3.0.1
+FOAM_DIR_NAME=OpenFOAM-$FOAM_VERSION
+source $CONDA_PREFIX/opt/$FOAM_DIR_NAME/etc/bashrc
+LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 py.test -v ./test
