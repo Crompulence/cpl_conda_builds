@@ -12,8 +12,6 @@ build:
 
 requirements:
     build:
-        - gcc
-        - toolchain
         - mpich 3.2.*
         - cpl
     run:

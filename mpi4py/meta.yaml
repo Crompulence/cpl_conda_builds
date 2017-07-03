@@ -3,24 +3,21 @@ package:
   version: 2.0.0
 
 source:
-  fn: mpi4py-2.0.0.tar.gz [unix]
+  fn: mpi4py-2.0.0.tar.gz
   url: https://pypi.python.org/packages/source/m/mpi4py/mpi4py-2.0.0.tar.gz
   md5: 4f7d8126d7367c239fd67615680990e3
 
 build:
-  number: 1          [linux]
-  number: 1          [win]
+  number: 2
   detect_binary_files_with_prefix: True
 
 requirements:
   build:
-    - python
-    - mpich 3.2      [linux]
-    - openmpi        [osx]
+    - python 2.7.*
+    - mpich 3.2
   run:
-    - python
-    - mpich 3.2     [linux]
-    - openmpi        [osx]
+    - python 2.7.*
+    - mpich 3.2
 
 test:
   imports:

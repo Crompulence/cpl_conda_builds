@@ -1,51 +1,38 @@
-# This file created by conda-build 2.1.2
-# meta.yaml template originally from:
-# /recipe_root, last modified Thu Feb  9 09:11:29 2017
-# ------------------------------------------------
+{% set version = "3.2" %}
 
 package:
     name: mpich
-    version: '3.2'
+    version: {{ version }}
+
 source:
-    fn: mpich-3.2.tar.gz
+    fn: mpich-{{ version }}.tar.gz
+    url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
     sha256: 0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc
-    url: http://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz
+
 build:
-    number: '4'
-    string: '4'
-requirements:
-    build: []
-    run:
-        - libgcc
+    number: 4
+
 test:
-    commands:
-        - conda inspect linkages mpich
     files:
         - tests/helloworld.c
         - tests/helloworld.cxx
         - tests/helloworld.f
         - tests/helloworld.f90
-    requires:
-        - gcc
+    commands:
+        - conda inspect linkages mpich
+
 about:
-    description: 'MPICH is a high performance and widely portable implementation of
-        the
-
-        Message Passing Interface (MPI) standard.
-
-        '
-    dev_url: https://wiki.mpich.org/mpich/index.php/Main_Page
-    doc_url: http://www.mpich.org/documentation/guides
     home: http://www.mpich.org/
     license: MPICH
-    license_family: Other
     license_file: COPYRIGHT
-    summary: A high performance widely portable implementation of the MPI standard.
+    license_family: Other
+    summary: 'A high performance widely portable implementation of the MPI standard.'
+    description: |
+      MPICH is a high performance and widely portable implementation of the
+      Message Passing Interface (MPI) standard.
+    doc_url: http://www.mpich.org/documentation/guides
+    dev_url: https://wiki.mpich.org/mpich/index.php/Main_Page
+
 extra:
     recipe-maintainers:
-        - astrofrog
-        - bekozi
-        - dalcinl
-        - minrk
-        - msarahan
-        - ocefpaf
+        - edu159

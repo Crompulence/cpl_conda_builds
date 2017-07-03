@@ -16,6 +16,7 @@ requirements:
         - mpich 3.2.*
         - openfoam 3.0.1
         - cpl
+        - flex 
     run:
         - mpich 3.2.*
         - openfoam 3.0.1

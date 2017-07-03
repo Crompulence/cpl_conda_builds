@@ -1,7 +1,7 @@
 FOAM_VERSION=3.0.1
 FOAM_DIR_NAME=OpenFOAM-$FOAM_VERSION
 CONDA_PYTHON=$(conda info --root)/bin/python
-BUILD_MODE="download" # | "download"
+BUILD_MODE="download"
 
 
 if [ $BUILD_MODE == "download" ]; then
@@ -22,6 +22,9 @@ else
     return 1
 fi
 
+export CPATH=$CPATH:$PREFIX/include
+export LIBRARY_PATH=$LIBRARY_PATH:$PREFIX/lib
+
 # Only build if the sources are downloaded
 if [ $BUILD_MODE == "download" ]; then
 	cd $SRC_DIR/../ThirdParty-3.0.1
@@ -32,17 +35,16 @@ if [ $BUILD_MODE == "download" ]; then
 	./Allwmake -j
 fi
 
-# Patch bashrc to allow proper sourcing as in 4.0
+# Patch bashrc to allow proper sourcing as in OpenFOAM 4.0
 cd $FOAM_INST_DIR/$FOAM_DIR_NAME
 pwd
 patch -p0 < $RECIPE_DIR/bashrc.patch
+#patch -p0 < $RECIPE_DIR/cshrc.patch
 
 # -- INSTALL --
 #Scotch and Ptscotch libraries compiled with mpi-system version of MPI
 cp $FOAM_EXT_LIBBIN/mpi-system/* $PREFIX/lib
 
-# Copy the whole directory structure to /opt except:
-# - $FOAM_LIBBIN/../applications
-# - $FOAM_LIBBIN/../src
+# Copy the whole directory structure to $PREFIX/opt:
 mkdir $PREFIX/opt
 cp -R $FOAM_INST_DIR/$FOAM_DIR_NAME $PREFIX/opt

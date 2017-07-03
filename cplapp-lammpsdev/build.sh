@@ -1,4 +1,3 @@
-#echo "$PREFIX/opt" > CODE_INST_DIR
 CONDA_PYTHON=$(conda info --root)/bin/python
 ${CONDA_PYTHON} ${RECIPE_DIR}/download-extra-sources.py
 echo "$SRC_DIR/../LAMMPS-DEV" > CODE_INST_DIR
