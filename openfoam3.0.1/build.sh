@@ -39,7 +39,7 @@ fi
 cd $FOAM_INST_DIR/$FOAM_DIR_NAME
 pwd
 patch -p0 < $RECIPE_DIR/bashrc.patch
-#patch -p0 < $RECIPE_DIR/cshrc.patch
+patch -p0 < $RECIPE_DIR/cshrc.patch
 
 # -- INSTALL --
 #Scotch and Ptscotch libraries compiled with mpi-system version of MPI

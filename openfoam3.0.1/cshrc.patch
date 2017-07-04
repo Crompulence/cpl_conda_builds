@@ -1,0 +1,28 @@
+--- etc/cshrc	2017-07-03 10:02:06.865130439 +0100
++++ etc/cshrc.mod	2017-07-03 10:01:56.321130461 +0100
+@@ -36,15 +36,17 @@
+ ################################################################################
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ #
+-# either setenv FOAM_INST_DIR before sourcing this file or set
+-# 'foamInstall' below to where OpenFOAM is installed
++# FOAM_INST_DIR is the location of the OpenFOAM installation which defaults to
++# the directory containing this file.
+ #
+-# Location of the OpenFOAM installation
+-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-set foamInstall = $HOME/$WM_PROJECT
+-# set foamInstall = ~$WM_PROJECT
+-# set foamInstall = /opt/$WM_PROJECT
+-# set foamInstall = /usr/local/$WM_PROJECT
++# Please set to the appropriate path if the default is not correct.
++#
++setenv FOAM_INST_DIR `lsof +p $$ |& grep -oE '/.*'$WM_PROJECT'[^/]*/etc/cshrc' | \
++    sed 's%/'$WM_PROJECT'[^/]*/etc/cshrc%%'`
++# setenv FOAM_INST_DIR  $HOME/$WM_PROJECT
++# setenv FOAM_INST_DIR  ~$WM_PROJECT
++# setenv FOAM_INST_DIR  /opt/$WM_PROJECT
++# setenv FOAM_INST_DIR  /usr/local/$WM_PROJECT
+ #
+ # END OF (NORMAL) USER EDITABLE PART
+ ################################################################################
