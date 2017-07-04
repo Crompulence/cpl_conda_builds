@@ -2,7 +2,7 @@
 {% set version = "3.0.1" %}
 {% set src_md5 = "304e6a14b9e69c20989527f5fb1ed724" %}
 {% set thirdparty_md5 = "4665072d7d29ab9af5ced402f667185a" %}
-{% set build_mode = "file" %}
+{% set build_mode = "download" %}
 
 package:
     name: {{ name }}
@@ -14,6 +14,8 @@ source:
     md5: {{ src_md5 }}
     patches:
         - ptscotchDecomp.patch
+        - bashrc.patch
+        - cshrc.patch
     {% else %}
     path: /home/cpl/miniconda2/conda-bld/openfoam_1497629173276/work
     {% endif %}

@@ -7,6 +7,7 @@ BUILD_MODE="download"
 if [ $BUILD_MODE == "download" ]; then
 	${CONDA_PYTHON} ${RECIPE_DIR}/download-extra-sources.py
 	cp ${RECIPE_DIR}/prefs.sh $SRC_DIR/etc
+	cp ${RECIPE_DIR}/prefs.csh $SRC_DIR/etc
 	export FOAM_INST_DIR=$(dirname $SRC_DIR)
 else
 	export FOAM_INST_DIR=$SRC_DIR
@@ -34,12 +35,6 @@ if [ $BUILD_MODE == "download" ]; then
 	cd $SRC_DIR
 	./Allwmake -j
 fi
-
-# Patch bashrc to allow proper sourcing as in OpenFOAM 4.0
-cd $FOAM_INST_DIR/$FOAM_DIR_NAME
-pwd
-patch -p0 < $RECIPE_DIR/bashrc.patch
-patch -p0 < $RECIPE_DIR/cshrc.patch
 
 # -- INSTALL --
 #Scotch and Ptscotch libraries compiled with mpi-system version of MPI
