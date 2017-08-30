@@ -1,0 +1,15 @@
+package:
+    name: flowmol
+    version: "1.0"
+source:
+    git_url: https://edwardsmith999@bitbucket.org/crompulence/cpl-library-private.git
+channels:
+    - edu159
+build:
+    number: 0
+requirements:
+    build:
+        - mpich 3.2
+    run:
+        - mpich 3.2
+
