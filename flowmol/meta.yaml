@@ -9,7 +9,11 @@ build:
     number: 0
 requirements:
     build:
-        - mpich 3.2
+        - mpich 3.2.*
+        - cpl
+
     run:
-        - mpich 3.2
+        - mpich 3.2.*
+        - cpl
+
 
