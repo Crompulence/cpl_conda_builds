@@ -13,15 +13,20 @@ build:
 requirements:
     build:
         - mpich 3.2.*
+        - python 2.7.*
         - cpl
+        - libgfortran 3.0.0
     run:
         - mpich 3.2.*
+        - python 2.7.*
         - cpl
+        - libgfortran 3.0.0
 test:
     requires:
         - mpich 3.2.*
         - cpl
         - cplpy
+        - libgfortran 3.0.0
     source_files :
         - test
     commands:

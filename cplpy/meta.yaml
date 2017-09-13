@@ -9,22 +9,22 @@ requirements:
     build:
         - cpl >=1.0
         - mpich 3.2
-        - python 2.7*
-        - pytest 2.9*
+        - python 2.7.*
+        - pytest 2.9.*
         - mpi4py >=2.0.0
         - numpy
     run:
         - cpl >=1.0
         - mpich 3.2
-        - python 2.7*
-        - pytest 2.9*
+        - python 2.7.*
+        - pytest 2.9.*
         - mpi4py >=2.0.0
         - numpy
 test:
     requires:
         - cpl >=1.0
-        - python 2.7*
-        - pytest 2.9*
+        - python 2.7.*
+        - pytest 2.9.*
         - mpi4py >=2.0.0
         - numpy
 about:
