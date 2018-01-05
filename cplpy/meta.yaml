@@ -3,8 +3,10 @@ package:
     version: "1.0"
 source:
     git_url: https://github.com/Crompulence/cpl-library.git
+    git_tag: edu159
 build:
     number: 0
+    string: edu159
 requirements:
     build:
         - cpl >=1.0

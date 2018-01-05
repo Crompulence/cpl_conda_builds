@@ -1,11 +1,13 @@
-{% set name = "cplapp-lammpsdev" %}
+{% set name = "cplapp-lammps-stable" %}
 {% set version = "1.0" %}
+{% set lammps_version = "11Aug17" %}
 
 package:
     name: {{ name }}
     version: {{ version }}
 source:
     git_url: https://github.com/Crompulence/CPL_APP_LAMMPS-DEV.git
+    git_tag: edu159
        
 build:
     number: 0
@@ -14,27 +16,28 @@ requirements:
     build:
         - mpich 3.2.*
         - python 2.7.*
-        - cpl
-        - libgfortran 3.0.0
+        - cpl 1.0.* edu159
+        - libgfortran 3.0.*
     run:
         - mpich 3.2.*
         - python 2.7.*
-        - cpl
-        - libgfortran 3.0.0
+        - cpl 1.0.* edu159
+        - libgfortran 3.0.*
 test:
     requires:
         - mpich 3.2.*
-        - cpl
-        - cplpy
-        - libgfortran 3.0.0
+        - cpl 1.0.* edu159
+        - cplpy 1.0.* edu159
+        - libgfortran 3.0.*
     source_files :
         - test
     commands:
-        - py.test -v ./test
+        - py.test -s -v ./test/velocityP-C
 extra:
     sources:
-        LAMMPS-DEV:
-            git_url: https://github.com/lammps/lammps.git
+        LAMMPS-STABLE:
+            fn: lammps-{{ lammps_version }}.tar.gz 
+            url: http://lammps.sandia.gov/tars/lammps-{{ lammps_version }}.tar.gz
     recipe-maintainers:
         - edu159
 about:

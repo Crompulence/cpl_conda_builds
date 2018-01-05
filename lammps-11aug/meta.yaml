@@ -1,0 +1,27 @@
+{% set name = "lammps-11aug" %}
+{% set version = "1.0" %}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+source:
+    git_url: https://github.com/lammps/lammps.git
+    git_tag: 0b3f1b8a156db65b5f3b8c01a7a10deaae119f81
+       
+build:
+    number: 0
+
+requirements:
+    build:
+        - mpich 3.2.*
+        - python 2.7.*
+        - libgfortran 3.0.0
+    run:
+        - mpich 3.2.*
+        - python 2.7.*
+        - libgfortran 3.0.0
+    recipe-maintainers:
+        - edu159
+about:
+    home: http://lammps.sandia.gov
+license: GPL3
