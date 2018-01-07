@@ -1,4 +1,4 @@
-{% set name = "lammps-11aug" %}
+{% set name = "lammps-11aug17" %}
 {% set version = "1.0" %}
 
 package:
@@ -10,16 +10,17 @@ source:
        
 build:
     number: 0
+    string: edu159
 
 requirements:
     build:
-        - mpich 3.2.*
+        - mpich 3.2.* edu159
         - python 2.7.*
-        - libgfortran 3.0.0
+        - libgfortran 3.0.*
     run:
-        - mpich 3.2.*
+        - mpich 3.2.* edu159
         - python 2.7.*
-        - libgfortran 3.0.0
+        - libgfortran 3.0.*
     recipe-maintainers:
         - edu159
 about:

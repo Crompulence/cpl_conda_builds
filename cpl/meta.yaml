@@ -1,25 +1,31 @@
+{% set version = "1.0" %}
+{% set compiler = "gcc" %}
+{% set compiler_version = "4.9.4" %}
+{% set user_build = "edu159" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
+
 package:
     name: cpl
-    version: "1.0"
+    version: {{ version }}
 source:
     git_url: https://github.com/Crompulence/cpl-library.git
     git_tag: edu159
 build:
     number: 0
-    string: edu159
+    string: {{ build_string }}
 
 requirements:
     build:
-        - mpich 3.2
+        - mpich 3.2.* {{ build_string }}
     run:
-        - mpich 3.2
+        - mpich 3.2.* {{ build_string }}
 test:
     requires:
         - python 2.7.*
         - pytest 2.9.*
-        - mpi4py >=2.0.0
+        - mpi4py >=2.0.0 {{ build_string }}
         - numpy
-        - cplpy
+        - cplpy {{ build_string }}
     commands :
         - cpltest all
 about:

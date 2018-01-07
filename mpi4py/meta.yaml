@@ -1,3 +1,9 @@
+{% set version = "3.2" %}
+{% set compiler = "gcc" %}
+{% set compiler_version = "4.9.4" %}
+{% set user_build = "edu159" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
+
 package:
   name: mpi4py
   version: 2.0.0
@@ -9,15 +15,16 @@ source:
 
 build:
   number: 2
+  string: {{ build_string }}
   detect_binary_files_with_prefix: True
 
 requirements:
   build:
     - python 2.7.*
-    - mpich 3.2
+    - mpich 3.2.* {{ build_string }}
   run:
     - python 2.7.*
-    - mpich 3.2
+    - mpich 3.2.* {{ build_string }}
 
 test:
   imports:

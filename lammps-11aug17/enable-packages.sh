@@ -1,4 +1,4 @@
 make no-all                                                                                                    
 while read p; do
-  $MAKE "yes-$p"
-done <$APP_DIR/config/lammps_packages.in
+  make "yes-$p"
+done <${RECIPE_DIR}/lammps_packages.in
