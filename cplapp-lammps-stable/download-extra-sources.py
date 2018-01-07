@@ -125,7 +125,7 @@ def main():
         print("Work Directory:", newmetadata.config.work_dir)
 
         # Download+extract source.
-        source.provide(newmetadata, newmetadata.config)
+        source.provide(newmetadata)
 
         print("-"*75)
 

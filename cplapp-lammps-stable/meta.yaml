@@ -1,7 +1,7 @@
 {% set name = "cplapp-lammps-stable" %}
 {% set lammps_version = "11Aug17" %}
 {% set compiler = "gcc" %}
-{% set compiler_version = "4.9.4" %}
+{% set compiler_version = "7.2.1" %}
 {% set user_build = "edu159" %}
 {% set build_string = user_build+"_"+compiler+compiler_version %}
 

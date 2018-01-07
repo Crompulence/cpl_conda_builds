@@ -1,4 +1,8 @@
 {% set version = "2.5.39" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
 
 package:
   name: flex
@@ -19,6 +23,7 @@ source:
 build:
   skip: true  # [win]
   number: 0
+  string: {{ build_string }}
   detect_binary_files_with_prefix: true
 
 requirements:
