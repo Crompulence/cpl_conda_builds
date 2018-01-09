@@ -3,6 +3,10 @@
 {% set src_md5 = "304e6a14b9e69c20989527f5fb1ed724" %}
 {% set thirdparty_md5 = "4665072d7d29ab9af5ced402f667185a" %}
 {% set build_mode = "download" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
 
 package:
     name: {{ name }}
@@ -16,12 +20,14 @@ source:
         - ptscotchDecomp.patch
         - bashrc.patch
         - cshrc.patch
+    folder: OpenFOAM-{{ version }}
     {% else %}
     path: /home/cpl/miniconda2/conda-bld/openfoam_1497629173276/work
     {% endif %}
        
 build:
     number: 0
+    string: {{ build_string }}
     rpaths:
         - lib/
         - lib/openfoam-scotch
@@ -29,23 +35,23 @@ build:
 requirements:
     build:
         - python 2.7.*
-        - mpich 3.2.*
+        - mpich 3.2.* {{ build_string }}
         - boost 1.60.*
-        - flex 2.5.*
+        - flex 2.5.* {{ build_string }}
         - cmake 3.*.* 
-        - gmp 6.1.0
-        - mpfr 3.1.5
+        - gmp >=6.1.0
+        - mpfr >=3.1.5
     run:
-        - mpich 3.2.*
+        - mpich 3.2.* {{ build_string }}
         - boost 1.60.*
-        - gmp 6.1.0
-        - mpfr 3.1.5
-        - flex 2.5.*
+        - gmp >=6.1.0
+        - mpfr >=3.1.5
+        - flex 2.5.* {{ build_string }}
 
 extra:
     {% if build_mode == "download" %}
     sources:
-        3rdparty:
+        ThirdParty-{{ version }}:
             fn: ThirdParty-{{ version }}.tgz
             url: https://sourceforge.net/projects/foam/files/foam/{{ version }}/ThirdParty-{{ version }}.tgz
             md5: {{ thirdparty_md5 }}

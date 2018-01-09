@@ -1,33 +1,43 @@
 {% set name = "cplapp-openfoam" %}
 {% set version = "3.0.1" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
+{% set git_repo_name = "CPL_APP_OPENFOAM-"+version %}
+
+
 
 package:
     name: {{ name }}
     version: {{ version }}
 source:
-    git_url: https://github.com/Crompulence/CPL_APP_OPENFOAM-3.0.1.git
+    git_url: {{ os.getenv("CPL_GIT_REPO") or "" }}/{{ git_repo_name }}.git
+    git_tag: {{ os.getenv("CPL_GIT_BRANCH") or "" }}
        
 build:
     number: 0
+    string: {{ build_string }}
 
 requirements:
     build:
         - python 2.7.*
-        - mpich 3.2.*
-        - openfoam 3.0.1
-        - cpl
-        - flex 
+        - mpich 3.2.* {{ build_string }}
+        - openfoam 3.0.1 {{ build_string }}
+        - cpl >=1.0  {{ build_string }}
+        - flex * {{build_string}}
     run:
-        - mpich 3.2.*
-        - openfoam 3.0.1
-        - cpl
+        - mpich 3.2.* {{ build_string }}
+        - openfoam 3.0.1 {{ build_string }}
+        - cpl >=1.0 {{ build_string }}
 test:
     requires:
-        - mpich 3.2.*
-        - openfoam 3.0.1
-        - cpl
-        - cplpy
+        - mpich 3.2.* {{ build_string }}
+        - openfoam 3.0.1 {{ build_string }}
+        - cpl >=1.0 {{ build_string }}
+        - cplpy >=1.0 {{ build_string }}
         - pyfoam 0.6.6
+        - pytest 2.9.*
     source_files :
         - test
 extra:

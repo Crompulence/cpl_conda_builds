@@ -1,15 +1,16 @@
 {% set version = "1.0" %}
-{% set compiler = "gcc" %}
-{% set compiler_version = "7.2.1" %}
-{% set user_build = "edu159" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
 {% set build_string = user_build+"_"+compiler+compiler_version %}
+{% set git_repo_name = "cpl-library" %}
 
 package:
     name: cplpy
     version: {{ version }}
 source:
-    git_url: https://github.com/Crompulence/cpl-library.git
-    git_tag: edu159
+    git_url: {{ os.getenv("CPL_GIT_REPO") or "" }}/{{ git_repo_name }}.git
+    git_tag: {{ os.getenv("CPL_GIT_BRANCH") or "" }}
 build:
     number: 0
     string: {{ build_string }}

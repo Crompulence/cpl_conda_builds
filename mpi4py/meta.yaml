@@ -1,7 +1,7 @@
 {% set version = "3.2" %}
-{% set compiler = "gcc" %}
-{% set compiler_version = "7.2.1" %}
-{% set user_build = "edu159" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
 {% set build_string = user_build+"_"+compiler+compiler_version %}
 
 package:

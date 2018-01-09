@@ -1,16 +1,17 @@
 {% set name = "cplapp-lammps-stable" %}
 {% set lammps_version = "11Aug17" %}
-{% set compiler = "gcc" %}
-{% set compiler_version = "7.2.1" %}
-{% set user_build = "edu159" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
 {% set build_string = user_build+"_"+compiler+compiler_version %}
+{% set git_repo_name = "CPL_APP_LAMMPS-DEV" %}
 
 package:
     name: {{ name }}
     version: {{ lammps_version }}
 source:
-    git_url: https://github.com/Crompulence/CPL_APP_LAMMPS-DEV.git
-    git_tag: edu159
+    git_url: {{ os.getenv("CPL_GIT_REPO") or "" }}/{{ git_repo_name }}.git
+    git_tag: {{ os.getenv("CPL_GIT_BRANCH") or "" }}
        
 build:
     number: 0
@@ -33,7 +34,7 @@ test:
     source_files :
         - test
     commands:
-        - py.test -s -v ./test/velocityP-C
+        - py.test -v test
 extra:
     sources:
         LAMMPS-STABLE:

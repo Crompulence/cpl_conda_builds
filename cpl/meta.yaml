@@ -3,12 +3,13 @@
 {% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
 {% set user_build = os.getenv("CPL_USER") or "" %}
 {% set build_string = user_build+"_"+compiler+compiler_version %}
+{% set git_repo_name = "cpl-library" %}
 
 package:
     name: cpl
     version: {{ version }}
 source:
-    git_url: {{ os.getenv("CPL_GIT_REPO") or "" }}
+    git_url: {{ os.getenv("CPL_GIT_REPO") or "" }}/{{ git_repo_name }}.git
     git_tag: {{ os.getenv("CPL_GIT_BRANCH") or "" }}
 build:
     number: 0
