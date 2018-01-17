@@ -1,5 +1,5 @@
 export CPL_CC=gcc
-export CPL_CC_VERSION=5.3.1
+export CPL_CC_VERSION=7.2.0
 export CPL_USER=edu159
 export CPL_GIT_REPO="https://github.com/Crompulence"
 export CPL_GIT_BRANCH=edu159

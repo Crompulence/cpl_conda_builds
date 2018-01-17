@@ -14,6 +14,9 @@ if [ $BUILD_MODE == "download" ]; then
 fi
 
 export FOAM_INST_DIR=$SRC_DIR
+# Add custom compiler options
+cp -Rf ${RECIPE_DIR}/linux64Gcc $FOAM_SRC_DIR/wmake/rules
+cp -f ${RECIPE_DIR}/Makefile.inc.i686_pc_linux2.shlib-OpenFOAM-64Int32 $SRC_DIR/ThirdParty-$FOAM_VERSION/etc/wmakeFiles/scotch
 foamDotFile=$FOAM_SRC_DIR/etc/bashrc
 echo $foamDotFile
 if [ -f $foamDotFile ]; then
@@ -25,17 +28,22 @@ else
 fi
 
 export CPATH=$CPATH:$PREFIX/include
-export LIBRARY_PATH=$LIBRARY_PATH:$PREFIX/lib
+export LIBRARY_PATH=$LIBRARY_PATH:$FOAM_LIBBIN:$PREFIX/lib
+#Pstream library folder
+export FOAM_MPI_LIBBIN=$FOAM_LIBBIN/$FOAM_MPI
 
-# Only build if the sources are downloaded
+cd $SRC_DIR/ThirdParty-$FOAM_VERSION
+# Only if the sources are downloaded
 if [ $BUILD_MODE == "download" ]; then
-	cd $SRC_DIR/ThirdParty-$FOAM_VERSION
 	cp $RECIPE_DIR/3rdParty3.0.1makeCGAL.patch .
 	patch < 3rdParty3.0.1makeCGAL.patch
-	./Allwmake -j
-	cd $FOAM_SRC_DIR
-	./Allwmake -j
 fi
+# -- COMPILE -- 
+export WM_CC=$CC
+export WM_CXX=$CXX
+export WM_LD_FLAGS+=" -Wl,-rpath,$PREFIX/lib -L$PREFIX/lib"
+cd $FOAM_SRC_DIR
+./Allwmake -j
 
 # -- INSTALL --
 #Scotch and Ptscotch libraries compiled with mpi-system version of MPI

@@ -16,26 +16,21 @@ build:
     string: {{ build_string }}
 requirements:
     build:
-        - cpl >=1.0 {{ build_string }}
-        - mpich 3.2.* {{ build_string }}
-        - python 2.7.*
-        - pytest 2.9.*
-        - mpi4py >=2.0.0 {{ build_string }}
-        - numpy
+        - python 2.7.* 
     run:
         - cpl >=1.0 {{ build_string }}
         - mpich 3.2* {{ build_string }}
         - python 2.7.* 
         - pytest 2.9.*
         - mpi4py >=2.0.0 {{ build_string }}
-        - numpy
+        - numpy 1.13.*
 test:
     requires:
         - cpl >=1.0 {{ build_string }}
         - python 2.7.*
         - pytest 2.9.*
         - mpi4py >=2.0.0 {{ build_string }}
-        - numpy
+        - numpy 1.13.*
 about:
     home: http://www.cpl-library.org
 license: GPL3

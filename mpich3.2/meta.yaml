@@ -17,7 +17,26 @@ build:
     number: 4
     string: {{ build_string }}
 
+requirements:
+    build:
+        - libgcc-ng {{ compiler_version }}
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
+
+    run:
+        - libgcc-ng
+        - libgfortran-ng
+        - libstdcxx-ng
+
 test:
+    requires:
+        - libgcc-ng {{ compiler_version }}
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
+
+
     files:
         - tests/helloworld.c
         - tests/helloworld.cxx

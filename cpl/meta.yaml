@@ -18,14 +18,22 @@ build:
 requirements:
     build:
         - mpich 3.2.* {{ build_string }}
+        - cmake >=2.9
+        - unifdef 2.11.*
+        - libgcc-ng {{ compiler_version }}
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
     run:
         - mpich 3.2.* {{ build_string }}
+        - libgcc-ng {{ compiler_version }}
+        - libstdcxx-ng {{ compiler_version }}
+        - libgfortran-ng {{ compiler_version }}
 test:
     requires:
         - python 2.7.*
         - pytest 2.9.*
         - mpi4py >=2.0.0 {{ build_string }}
-        - numpy
         - cplpy 1.0.* {{ build_string }}
     commands :
         - cpltest all

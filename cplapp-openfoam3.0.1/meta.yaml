@@ -21,17 +21,24 @@ build:
 
 requirements:
     build:
-        - python 2.7.*
         - mpich 3.2.* {{ build_string }}
         - openfoam 3.0.1 {{ build_string }}
         - cpl >=1.0  {{ build_string }}
         - flex * {{build_string}}
+        - libgcc-ng {{ compiler_version }}
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
     run:
         - mpich 3.2.* {{ build_string }}
         - openfoam 3.0.1 {{ build_string }}
         - cpl >=1.0 {{ build_string }}
+        - libgcc-ng {{ compiler_version }}
+        - libstdcxx-ng {{ compiler_version }}
+        - libgfortran-ng {{ compiler_version }}
 test:
     requires:
+        - python 2.7.*
         - mpich 3.2.* {{ build_string }}
         - openfoam 3.0.1 {{ build_string }}
         - cpl >=1.0 {{ build_string }}

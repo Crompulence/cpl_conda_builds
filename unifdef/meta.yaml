@@ -1,0 +1,22 @@
+{% set version = "2.11.23" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
+
+package:
+  name: unifdef
+  version: {{ version }}
+
+build:
+  number: 0
+  string: {{ build_string }}
+
+source:
+  url: http://dotat.at/prog/unifdef/unifdef-2.11.23.1cca442.tar.xz
+  sha256: a14bcc707cd6c145cca6a0f66a86afb7489c642a4ecc54d61137bb8c6aaf11e6
+
+about:
+  summary: ifdef preprocessor remover
+  home: http://dotat.at/prog/unifdef/
+  license: BSD 2-clause

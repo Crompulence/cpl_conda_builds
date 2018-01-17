@@ -28,6 +28,10 @@ build:
 
 requirements:
   build:
+    - libgcc-ng {{ compiler_version }}
+    - gcc_linux-64 {{ compiler_version }}
+    - gxx_linux-64 {{ compiler_version }}
+    - gfortran_linux-64 {{ compiler_version }}
     - autoconf
     - automake
     - libiconv

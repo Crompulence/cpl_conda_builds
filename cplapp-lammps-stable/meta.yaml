@@ -22,6 +22,10 @@ requirements:
         - mpich 3.2.* {{ build_string }}
         - python 2.7.*
         - cpl 1.0.* {{ build_string }}
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
+
     run:
         - mpich 3.2.* {{ build_string }}
         - python 2.7.*

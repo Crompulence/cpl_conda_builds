@@ -1,0 +1,26 @@
+SUFFIXES += .c
+
+cWARN        = -Wall
+
+cc          = $(CC) -m64
+
+include $(RULES)/c$(WM_COMPILE_OPTION)
+
+cFLAGS      = $(GFLAGS) $(cWARN) $(cOPT) $(cDBUG) $(LIB_HEADER_DIRS) -fPIC
+
+ctoo        = $(WM_SCHEDULER) $(cc) $(cFLAGS) -c $< -o $@
+
+LINK_LIBS   = $(cDBUG)
+
+LINKLIBSO   = $(cc) -shared \
+	-L$(PREFIX)/lib -Wl,rpath=$(PREFIX)/lib \
+	-L$(FOAM_LIBBIN) -Wl,rpath=$(FOAM_LIBBIN) \
+	-L$(FOAM_LIBBIN)/$(FOAM_MPI) -Wl,rpath=$(FOAM_LIBBIN)/$(FOAM_MPI) \
+	-L$(FOAM_EXT_LIBBIN) -Wl,rpath=$(FOAM_EXT_LIBBIN) \
+	-L$(FOAM_EXT_LIBBIN)/$(FOAM_MPI) -Wl,rpath=$(FOAM_EXT_LIBBIN)/$(FOAM_MPI)
+LINKEXE     = $(cc) -Xlinker --add-needed -Xlinker -z -Xlinker nodefs \
+	-L$(PREFIX)/lib -Wl,rpath=$(PREFIX)/lib \
+	-L$(FOAM_LIBBIN) -Wl,rpath=$(FOAM_LIBBIN) \
+	-L$(FOAM_LIBBIN)/$(FOAM_MPI) -Wl,rpath=$(FOAM_LIBBIN)/$(FOAM_MPI) \
+	-L$(FOAM_EXT_LIBBIN) -Wl,rpath=$(FOAM_EXT_LIBBIN) \
+	-L$(FOAM_EXT_LIBBIN)/$(FOAM_MPI) -Wl,rpath=$(FOAM_EXT_LIBBIN)/$(FOAM_MPI)

@@ -16,11 +16,12 @@ requirements:
     build:
         - mpich 3.2.* edu159
         - python 2.7.*
-        - libgfortran 3.0.*
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
     run:
         - mpich 3.2.* edu159
         - python 2.7.*
-        - libgfortran 3.0.*
     recipe-maintainers:
         - edu159
 about:
