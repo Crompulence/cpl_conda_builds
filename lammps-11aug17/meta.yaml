@@ -1,26 +1,30 @@
-{% set name = "lammps-11aug17" %}
-{% set version = "1.0" %}
+{% set name = "lammps-stable" %}
+{% set lammps_version = "11Aug17" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
 
 package:
     name: {{ name }}
-    version: {{ version }}
+    version: {{ lammps_version }}
 source:
     git_url: https://github.com/lammps/lammps.git
     git_tag: 0b3f1b8a156db65b5f3b8c01a7a10deaae119f81
        
 build:
     number: 0
-    string: edu159
+    string: {{ build_string }}
 
 requirements:
     build:
-        - mpich 3.2.* edu159
+        - mpich 3.2.* {{ build_string }}
         - python 2.7.*
         - gcc_linux-64 {{ compiler_version }}
         - gxx_linux-64 {{ compiler_version }}
         - gfortran_linux-64 {{ compiler_version }}
     run:
-        - mpich 3.2.* edu159
+        - mpich 3.2.* {{ build_string }}
         - python 2.7.*
     recipe-maintainers:
         - edu159
