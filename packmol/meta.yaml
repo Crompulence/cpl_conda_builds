@@ -1,0 +1,30 @@
+{% set version = "17.221" %}
+{% set compiler = os.getenv("CPL_CC") or "" %}
+{% set compiler_version = os.getenv("CPL_CC_VERSION") or "" %}
+{% set user_build = os.getenv("CPL_USER") or "" %}
+{% set build_string = user_build+"_"+compiler+compiler_version %}
+
+package:
+  name: packmol
+  version: {{ version }}
+
+build:
+  number: 0
+  string: {{ build_string }}
+
+requirements:
+    build:
+        - gfortran_linux-64 {{ compiler_version }}
+        - libgcc-ng
+
+    run:
+        - libgfortran-ng
+        - libgcc-ng
+
+source:
+  url: https://github.com/mcubeg/packmol/archive/{{ version }}.tar.gz 
+
+about:
+  summary: "Packmol: initial configuration generator for MD."
+  home: http://m3g.iqm.unicamp.br/packmol/home.shtml
+  license: MIT
