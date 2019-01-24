@@ -23,6 +23,8 @@ requirements:
         - pyfoam 0.6.6
         - numpy 1.13.*
         - scipy 1.0.*
+        - moltemplate 2.8.1
+        - packmol
 # test:
 #     requires:
 #         - python 2.7.*
