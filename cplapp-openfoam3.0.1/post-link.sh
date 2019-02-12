@@ -5,5 +5,5 @@ cd $FOAM_LIBBIN/$FOAM_MPI
 mv libPstream.so libPstream.so.orig
 mv libPstream.so.cpl libPstream.so
 echo "INFO:
-	libPstream.so has been replaced in OpenFOAM 3.0.1 It will be restored
+	Shared library 'libPstream.so' has been replaced in OpenFOAM 3.0.1 It will be restored
 	to the default when the app is uninstalled." >> $PREFIX/.messages.txt

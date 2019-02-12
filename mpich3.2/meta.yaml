@@ -25,9 +25,9 @@ requirements:
         - gfortran_linux-64 {{ compiler_version }}
 
     run:
-        - libgcc-ng
-        - libgfortran-ng
-        - libstdcxx-ng
+        - libgcc-ng {{ compiler_version }}
+        - libgfortran-ng {{ compiler_version }}
+        - libstdcxx-ng {{ compiler_version }}
 
 test:
     requires:

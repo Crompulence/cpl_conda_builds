@@ -12,7 +12,7 @@ source:
     git_url: {{ os.getenv("CPL_GIT_REPO") or "" }}/{{ git_repo_name }}.git
     git_tag: {{ os.getenv("CPL_GIT_BRANCH") or "" }}
 build:
-    number: 0
+    number: 1
     string: {{ build_string }}
 requirements:
     build:

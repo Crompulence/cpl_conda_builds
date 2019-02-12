@@ -40,6 +40,9 @@ requirements:
     - bison
 
   run:
+    - gcc_linux-64 {{ compiler_version }}
+    - gxx_linux-64 {{ compiler_version }}
+    - gfortran_linux-64 {{ compiler_version }}
     - libiconv
     - m4
 

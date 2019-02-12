@@ -5,4 +5,4 @@ cd $FOAM_LIBBIN/$FOAM_MPI
 mv libPstream.so libPstream.so.cpl
 mv libPstream.so.orig libPstream.so
 echo "INFO:
-	libPstream.so has been restored to the default in OpenFOAM 3.0.1." >> $PREFIX/.messages.txt
+	Shared library 'libPstream.so' has been restored to the default in OpenFOAM 3.0.1." >> $PREFIX/.messages.txt

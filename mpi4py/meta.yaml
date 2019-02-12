@@ -28,6 +28,9 @@ requirements:
   run:
     - python 2.7.*
     - mpich 3.2.* {{ build_string }}
+    - gcc_linux-64 {{ compiler_version }}
+    - gxx_linux-64 {{ compiler_version }}
+    - gfortran_linux-64 {{ compiler_version }}
 
 test:
   imports:

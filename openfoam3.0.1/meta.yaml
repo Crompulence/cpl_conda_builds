@@ -36,7 +36,7 @@ requirements:
     build:
         - python 2.7.*
         - mpich 3.2.* {{ build_string }}
-        - libboost >1.60.*
+        - libboost 1.67.*
         - flex 2.5.* {{ build_string }}
         - bison
         - zlib 
@@ -49,11 +49,14 @@ requirements:
 
     run:
         - mpich 3.2.* {{ build_string }}
-        - libboost >1.60.*
+        - libboost 1.67.*
         - gmp >=6.1.0
         - mpfr >=3.1.5
         - flex 2.5.* {{ build_string }}
         - zlib 
+        - libgcc-ng {{ compiler_version }}
+        - libgfortran-ng {{ compiler_version }}
+        - libstdcxx-ng {{ compiler_version }}
 
 extra:
     {% if build_mode == "download" %}

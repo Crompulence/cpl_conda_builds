@@ -26,6 +26,9 @@ requirements:
     run:
         - mpich 3.2.* {{ build_string }}
         - python 2.7.*
+        - gcc_linux-64 {{ compiler_version }}
+        - gxx_linux-64 {{ compiler_version }}
+        - gfortran_linux-64 {{ compiler_version }}
     recipe-maintainers:
         - edu159
 about:

@@ -30,6 +30,9 @@ requirements:
         - mpich 3.2.* {{ build_string }}
         - python 2.7.*
         - cpl 1.0.* {{ build_string }}
+        - libgcc-ng {{ compiler_version }}
+        - libgfortran-ng {{ compiler_version }}
+        - libstdcxx-ng {{ compiler_version }}
 test:
     requires:
         - mpich 3.2.* {{ build_string }}
